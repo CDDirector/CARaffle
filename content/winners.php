@@ -51,11 +51,9 @@ if ($count == 0) {
 </div>
 <?php if ($notenough) { ?>
     <h1 class="error pure-u-1 pure-u-md-1 centered-text"><?=$notenough?></h1>
-<?php } else { ?>
-    <?php foreach ($winners as &$winner) { ?>
+<?php } else { foreach ($winners as &$winner) { ?>
         <div class="pure-u-1 pure-u-md-1-<?=$winnersCount?> l-box centered-text">
             <img class="trophy horizontal-center" src="/assets/images/trophy.png"/>
             <h3><?=$winner?></h3>
         </div>
-    <?php } ?>
-<?php } ?>
+<?php } } ?>
