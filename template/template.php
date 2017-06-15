@@ -20,7 +20,7 @@
     <style type="text/css">
         * { box-sizing: border-box; }
 
-        // fonts
+        /* fonts */
         @font-face {
             font-family: 'CA Sans';
             src: url("/assets/fonts/ca-sans/CSSansWebRegular/ca_sans_web-regular.eot");
@@ -100,6 +100,7 @@
         article content {
             display: block;
             max-width: 1024px;
+            padding: 5px 0;
             /*-webkit-box-direction: normal;*/
         }
 
@@ -130,6 +131,8 @@
             margin: 0 auto !important;
             display: block !important;
         }
+
+        .bold { font-weight: bold; }
 
         @media screen and (max-width: 48em) {
             article content {
