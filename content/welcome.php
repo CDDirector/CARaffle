@@ -1,5 +1,6 @@
 <?php
-require_once ('./libs/banbuilder/src/CensorWords.php');
+require_once ('./libs/ProfanityFilter/src/mofodojodino/ProfanityFilter/Check.php');
+use mofodojodino\ProfanityFilter\Check;
 
 $dataFileName = getcwd() . DIRECTORY_SEPARATOR . 'mydata.txt';
 $nameInput = 'name';
@@ -10,35 +11,13 @@ if (!file_exists($dataFileName)) {
     touch($dataFileName);
 }
 
-$inputText = $_POST[$nameInput];
+$inputText = trim(urldecode($_POST[$nameInput]));
 if(isset($inputText) && !empty($inputText)) {
     // check ban words
-    $censor = new CensorWords;
-    /*
-     * To choose a non-English language file (or several dictionaries at once),
-     * pass the semantic filename without the .php into the setDictionary method call as a parameter.
-     * For example, to use the French dictionary of profanity, you would use:
-     *
-     * $langs = array('fr','it');
-     * $badwords = $censor->setDictionary($langs);
-     *
-     * To add your new favorite words just use the next:
-     *
-     * array_push($badwords,
-     *   'word1',
-     *   'word2',
-     * );
-     *
-     *
-     * @see ../libs/banbuilder/src/dict/*
-     * @see https://banbuilder.com/
-     */
-    $result = $censor->censorString($inputText);
-    $matched = $result['matched'];
-    if (is_array($matched) && sizeof($matched)) {
+    $check = new Check();
+    if ($check->hasProfanity($inputText)) {
         // profanity word(s) found, so
-        $cleaned = $result['clean'];
-        $message = "Nice try...<br/>But CDDirector blocks words and phrases marked as offensive by CA Technologies";
+        $message = "CDDirector blocks words and phrases marked as offensive by CA Technologies.";
     } else {
         // check name uniqueness
         $userName = $inputText . PHP_EOL;
