@@ -38,7 +38,7 @@ if(isset($inputText) && !empty($inputText)) {
     if (is_array($matched) && sizeof($matched)) {
         // profanity word(s) found, so
         $cleaned = $result['clean'];
-        $message = "Nice try...<br/>But $cleaned You was banned by our system.";
+        $message = "Nice try...<br/>But CDDirector blocks words and phrases marked as offensive by CA Technologies";
     } else {
         // check name uniqueness
         $userName = $inputText . PHP_EOL;
