@@ -75,38 +75,8 @@
             flex: 1 0 auto;
         }
 
-        header {
-            background-color: #e88007;
-            position: relative;
-            width: 100%;
-            min-height: 274px;
-            color: white;
-        }
-        header logo { }
-        header logo icon {
-            display: block;
-            background: url(/assets/images/logo.png) no-repeat;
-            width: 175px;
-            height: 147px;
-            margin: 0 auto;
-        }
-
-        header text { text-align: center; }
-        header h1 { font-size: 2em; margin-bottom: 0; margin-top: 0; }
-        header h3 { font-size: 1em; font-weight: normal; margin: 0; }
-
-        article {
-            color: #444444;
-        }
-        article content {
-            display: block;
-            max-width: 1024px;
-            padding: 5px 0;
-            /*-webkit-box-direction: normal;*/
-        }
-
         .flex-column {
-            flex: 1 1 0%;
+            /*flex: 1 1 0%;*/
             display: flex;
             flex-direction: column;
             align-content: flex-start;
@@ -135,60 +105,27 @@
 
         .bold { font-weight: bold; }
 
-        @media screen and (max-width: 48em) {
-            /* up to medium sized displays */
-            article content {
-                max-width: 100%;
-            }
+        .l-box { padding: 1em; }
+
+        .blue-button {
+            color: white;
+            background-color: #7CB8C9;
+            font-weight: bold;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            /*padding: 0.2em 0;*/
         }
 
-        @media screen and (max-width: 80em) {
-            /* up to large sized displays */
-            header h1 { font-size: 4em; margin-top: 0.6em; }
-            header h3 { font-size: 1.6em; }
-        }
-
-        @media screen and (min-width: 48em) {
-            /* from medium sized displays and up */
-            header logo {
-                width: 175px !important;
-                margin-left: 45px;
-            }
-            header logo icon {
-                vertical-align: middle;
-            }
-            header text {
-                width: 80% !important;
-            }
-        }
-
-        @media screen and (min-width: 64em) {
-            /* from large sized displays and up */
-            article content {
-                font-size: 200% !important;
-            }
-        }
-
-        @media screen and (min-width: 80em) {
-            /* from x-large sized displays and up */
-            header h1 { font-size: 6.25em; margin-top: 0.6em; }
-            header h3 { font-size: 1.6em; }
+        .icon {
+            background: none no-repeat center center;
+            background-size: contain;
         }
     </style>
 </head>
 <body>
     <body-wrapper>
-        <header class="pure-g">
-            <logo class="pure-u-1 pure-u-lg-1-2 pure-u-xl-1-2"><icon></icon></logo>
-            <text class="pure-u-1 pure-u-lg-1-2 pure-u-xl-1-2">
-                <h1><?php $this->headerText(); ?></h1>
-                <h3 style="letter-spacing: 2px;"><?php $this->subHeaderText(); ?></h3>
-            </text>
-        </header>
-
-        <article class="flex-column center-center">
-            <content class="pure-g"><?php $this->pageContent(); ?></content>
-        </article>
+        <?php include "template/header.php"; ?>
+        <?php include "template/body.php"; ?>
     </body-wrapper>
 </body>
 </html>

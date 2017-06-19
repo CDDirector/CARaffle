@@ -11,13 +11,13 @@ if (!file_exists($dataFileName)) {
     touch($dataFileName);
 }
 
-$inputText = trim(urldecode($_POST[$nameInput]));
-if(isset($inputText) && !empty($inputText)) {
+$inputText = isset($_POST[$nameInput]) ? trim(urldecode($_POST[$nameInput])) : "";
+if(!empty($inputText)) {
     // check ban words
     $check = new Check();
     if ($check->hasProfanity($inputText)) {
         // profanity word(s) found, so
-        $message = "CDDirector blocks words and phrases marked as offensive by CA Technologies.";
+        $message = "CA Technologies blocks words and phrases marked as offensive.";
     } else {
         // check name uniqueness
         $userName = $inputText . PHP_EOL;
@@ -42,32 +42,23 @@ if(isset($inputText) && !empty($inputText)) {
 
 <style scoped>
     .stop {
-        width: 200px;
         height: 300px;
-        background: url(/assets/images/stop.png) no-repeat center center;
+        background-image: url(/assets/images/stop.png);
     }
     .cross {
-        width: 200px;
         height: 300px;
-        background: url(/assets/images/cross.png) no-repeat center center;
+        background-image: url(/assets/images/cross.png);
     }
 
     @media screen and (max-width: 48em) {
-        .stop {
-            background-size: 100px 150px;
-            width: 100px;
-            height: 150px;
-        }
-        .cross {
-            background-size: 100px 150px;
-            width: 100px;
-            height: 150px;
-        }
+        /* up to medium sized displays */
+        .stop { height: 150px; }
+        .cross { height: 150px; }
     }
 
 </style>
 
 <div class="pure-u-1 pure-u-md-1 centered-text">
-    <div class="horizontal-center <?=$icon?>"></div>
+    <div class="icon horizontal-center <?=$icon?>"></div>
     <h3><?=$message?></h3>
 </div>
