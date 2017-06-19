@@ -1,36 +1,26 @@
 <style scoped>
     .painter {
-        width: 147px;
         height: 370px;
-        background: url(/assets/images/painter.png) no-repeat center center;
+        background-image: url(/assets/images/painter.png);
     }
     .message {
         font-size: 1em;
         margin: 7px 0;
     }
 
-    .try-btn {
-        background-color: #7CB8C9;
-        color: white;
-        font-weight: bold;
-        font-size: 1em;
-        width: 329px;
-        border-radius: 4px;
-        padding: 0.2em 0;
-    }
-
     @media screen and (max-width: 48em) {
+        /* up to medium sized displays */
         .painter {
-            background-size: 73px 185px;
-            width: 73px;
             height: 185px;
         }
 
         .message {
             font-size: 1em;
         }
-
-        .try-btn {
+    }
+    @media screen and (max-width: 64em) {
+        /* up to large sized displays */
+        .blue-button {
             width: 80%;
         }
     }
@@ -41,7 +31,7 @@
     <div class="message">Some user stories were not implemented.</div>
     <div class="message">Please check you’ve deployed the latest build in the production environment.</div>
     <div class="pure-u-1">
-        <div class="horizontal-center painter"></div>
+        <div class="icon horizontal-center painter"></div>
     </div>
-    <div class="pure-u-1" style="margin-top: 1em;"><a class="pure-button try-btn" href="/">Try Again</a></div>
+    <div class="pure-u-1" style="margin-top: 1em;"><a class="pure-button blue-button" href="/">Try Again</a></div>
 </div>
